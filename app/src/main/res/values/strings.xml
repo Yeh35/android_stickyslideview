@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">StickySlideViewExample</string>
+    <string name="stickyslideview_code_show">StickySlideView Code Version Show</string>
+    <string name="stickyslideview_xml_show">StickySlideView XML Version Show</string>
+</resources>

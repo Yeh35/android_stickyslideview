@@ -1,0 +1,3 @@
+include ':stickyslideview'
+include ':app'
+rootProject.name = "StickySlideViewExample"
