@@ -17,10 +17,10 @@ class MainActivity : AppCompatActivity() {
 
         stickySlideViewXml = findViewById(R.id.sticky_slide_view_xml)
 
-        stickySlideViewCode = StickySlideView(this)
+        val stickySlideViewCode = StickySlideView(this)
         stickySlideViewCode.addView(View(this), ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
-            500
+            5000
         ))
         this.addContentView(stickySlideViewCode, ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.MATCH_PARENT,
