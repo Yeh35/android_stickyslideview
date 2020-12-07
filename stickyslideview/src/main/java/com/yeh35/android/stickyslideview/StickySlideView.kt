@@ -19,9 +19,18 @@ class StickySlideView @JvmOverloads constructor(
 
     //properties
     @ColorInt
-    var themeBackGroundColor: Int
+    var themeBackGroundColor: Int = 0
+        set(value) {
+            motionLayout.setBackgroundColor(value)
+            field = value
+        }
     var state: State = State.CLOSE
     var transitionListener: MotionLayout.TransitionListener? = null
+    var duration: Int = 300
+        set(value) {
+            motionLayout.getTransition(R.id.transition_sticky_slide_swipe).duration = field
+            field = value
+        }
 
     //private
     private val utilResources = UtilResources(this.resources)
@@ -31,11 +40,13 @@ class StickySlideView @JvmOverloads constructor(
     //views
     private val motionLayout: MotionLayout
     private val layoutBase: FrameLayout
+    private val viewClose: View
 
     init {
         // view mapping
         motionLayout = View.inflate(context, R.layout.sticky_slide_view, null) as MotionLayout
         layoutBase = motionLayout.findViewById(R.id.layout_base)
+        viewClose = motionLayout.findViewById(R.id.view_close)
         super.addView(motionLayout)
 
         //properties mappting
@@ -49,10 +60,10 @@ class StickySlideView @JvmOverloads constructor(
                 R.styleable.StickySlideView_themeBackgroundColor,
                 utilResources.getColor(R.color.transparent_gray)
             )
+            duration = getInteger(R.styleable.StickySlideView_duration, duration)
         }
 
         //properties mapping
-        motionLayout.setBackgroundColor(themeBackGroundColor)
         this.visibility = View.GONE
 
         // Listener setting
@@ -80,6 +91,10 @@ class StickySlideView @JvmOverloads constructor(
                 transitionListener?.onTransitionCompleted(motion, currentId)
             }
         })
+
+        viewClose.setOnClickListener {
+            close()
+        }
     }
 
     override fun addView(child: View?) {

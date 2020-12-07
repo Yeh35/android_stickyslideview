@@ -3,6 +3,7 @@
 
     <declare-styleable name="StickySlideView">
         <attr name="themeBackgroundColor" format="color"/>
+        <attr name="duration" format="integer"/>
     </declare-styleable>
 
 </resources>

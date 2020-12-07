@@ -4,12 +4,12 @@
     xmlns:motion="http://schemas.android.com/tools">
 
     <Transition
-        android:id="@+id/transition_sticky_slide"
+        android:id="@+id/transition_sticky_slide_swipe"
         app:constraintSetEnd="@id/end"
         app:constraintSetStart="@id/start">
         <OnSwipe
             motion:dragDirection="dragUp"
-            motion:touchAnchorId="@id/dial_pad"
+            motion:touchAnchorId="@id/layout_base"
             motion:touchAnchorSide="top" />
     </Transition>
 
@@ -20,8 +20,6 @@
             android:layout_height="wrap_content"
             app:layout_constraintTop_toBottomOf="parent" />
     </ConstraintSet>
-
-    <!-- The actual end state of the transition -->
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
