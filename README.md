@@ -75,3 +75,6 @@ XML에 추가 또는 코드로 추가 하는 방법이 있다.
         ViewGroup.LayoutParams.MATCH_PARENT
     ))
     ```
+
+## Warning
+* 이 View가 올바르게 동작하기 위해서는 `ConstraintLayout` 또는 `MotionLayout` 하위에 있어야 합니다.
