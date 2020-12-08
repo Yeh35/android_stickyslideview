@@ -6,7 +6,7 @@
 This project is an Android Custom View.
 It is a library to easily implement Sticky Slide, and you can change the contents of the view.
 
-![device-2020-12-07](./documents/device-2020-12-07.gif)
+![device-2020-12-07](./documents/device-2020-12-07.gif){: width="30%" height="30%"}
 
 ## How to set
 ### Gradle
