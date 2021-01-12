@@ -23,7 +23,7 @@ It is a library to easily implement Sticky Slide, and you can change the content
 2. Add the dependency
     ```
     dependencies {
-	        implementation 'com.github.Yeh35:android_stickyslideview:1.1.0'
+	        implementation 'com.github.Yeh35:android_stickyslideview:1.2.0'
 	}
     ```
 
@@ -42,7 +42,7 @@ It is a library to easily implement Sticky Slide, and you can change the content
     <dependency>
 	    <groupId>com.github.Yeh35</groupId>
 	    <artifactId>android_stickyslideview</artifactId>
-	    <version>1.1.0</version>
+	    <version>1.2.0</version>
 	</dependency>
     ```
 
@@ -78,15 +78,5 @@ XML에 추가 또는 코드로 추가 하는 방법이 있다.
 
 ## Warning
 * 이 View가 올바르게 동작하기 위해서는 `ConstraintLayout` 또는 `MotionLayout` 하위에 있어야 합니다.
-
-
-## Patch notes
-### 1.0.0
-출시
-
-### 1.1.0
-Slide의 상단을 클릭시 Close 되던 기능을 삭제하였다
-대신 콜백을 지원함으로 사용자가 좀 더 원하는 결과를 낼 수 있도록 하였다.
-
 
 
