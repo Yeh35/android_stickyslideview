@@ -23,7 +23,7 @@ It is a library to easily implement Sticky Slide, and you can change the content
 2. Add the dependency
     ```
     dependencies {
-	        implementation 'com.github.Yeh35:android_stickyslideview:1.0'
+	        implementation 'com.github.Yeh35:android_stickyslideview:1.1.0'
 	}
     ```
 
@@ -42,7 +42,7 @@ It is a library to easily implement Sticky Slide, and you can change the content
     <dependency>
 	    <groupId>com.github.Yeh35</groupId>
 	    <artifactId>android_stickyslideview</artifactId>
-	    <version>1.0</version>
+	    <version>1.1.0</version>
 	</dependency>
     ```
 
