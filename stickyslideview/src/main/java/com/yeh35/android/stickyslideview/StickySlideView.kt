@@ -25,12 +25,14 @@ class StickySlideView @JvmOverloads constructor(
             field = value
         }
     var state: State = State.CLOSE
+        private set
     var transitionListener: MotionLayout.TransitionListener? = null
     var duration: Int = 300
         set(value) {
             motionLayout.getTransition(R.id.transition_sticky_slide_swipe).duration = field
             field = value
         }
+    var onTopClickListener: OnTopClickListener? = null
 
     //private
     private val utilResources = UtilResources(this.resources)
@@ -40,13 +42,13 @@ class StickySlideView @JvmOverloads constructor(
     //views
     private val motionLayout: MotionLayout
     private val layoutBase: FrameLayout
-    private val viewClose: View
+    private val viewTop: View
 
     init {
         // view mapping
         motionLayout = View.inflate(context, R.layout.sticky_slide_view, null) as MotionLayout
         layoutBase = motionLayout.findViewById(R.id.layout_base)
-        viewClose = motionLayout.findViewById(R.id.view_close)
+        viewTop = motionLayout.findViewById(R.id.view_top)
         super.addView(motionLayout)
 
         //properties mappting
@@ -61,10 +63,8 @@ class StickySlideView @JvmOverloads constructor(
                 utilResources.getColor(R.color.transparent_gray)
             )
             duration = getInteger(R.styleable.StickySlideView_duration, duration)
+            this@StickySlideView.visibility = getInt(R.styleable.StickySlideView_android_visibility, View.GONE)
         }
-
-        //properties mapping
-        this.visibility = View.GONE
 
         // Listener setting
         motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
@@ -92,8 +92,12 @@ class StickySlideView @JvmOverloads constructor(
             }
         })
 
-        viewClose.setOnClickListener {
-            close()
+        viewTop.setOnClickListener {
+            onTopClickListener?.onTopClick(this)
+        }
+
+        if (this.visibility == View.VISIBLE) {
+            this.show()
         }
     }
 

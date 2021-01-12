@@ -16,8 +16,7 @@
         android:text="@string/stickyslideview_code_show"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:onClick="onClick"/>
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <Button
         android:id="@+id/btn_xml_show"
@@ -29,19 +28,25 @@
         android:text="@string/stickyslideview_xml_show"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_code_show"
-        android:onClick="onClick"/>
+        app:layout_constraintTop_toBottomOf="@+id/btn_code_show"/>
 
-
-    <com.yeh35.android.stickyslideview.StickySlideView
-        android:id="@+id/sticky_slide_view_xml"
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <View
+        <com.yeh35.android.stickyslideview.StickySlideView
+            android:id="@+id/sticky_slide_view_xml"
+            android:visibility="visible"
             android:layout_width="match_parent"
-            android:layout_height="500dp"/>
+            android:layout_height="match_parent">
 
-    </com.yeh35.android.stickyslideview.StickySlideView>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="500dp"/>
+
+        </com.yeh35.android.stickyslideview.StickySlideView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

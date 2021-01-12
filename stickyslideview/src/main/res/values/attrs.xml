@@ -4,6 +4,7 @@
     <declare-styleable name="StickySlideView">
         <attr name="themeBackgroundColor" format="color"/>
         <attr name="duration" format="integer"/>
+        <attr name="android:visibility"/>
     </declare-styleable>
 
 </resources>

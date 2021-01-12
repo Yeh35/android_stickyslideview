@@ -8,11 +8,11 @@
     android:background="@color/transparent_gray"
     app:layoutDescription="@xml/sticky_slide_scene">
 
-
     <View
-        android:id="@+id/view_close"
+        android:id="@+id/view_top"
         android:layout_width="match_parent"
         android:layout_height="0dp"
+        android:background="@color/transparent"
         app:layout_constraintBottom_toTopOf="@+id/layout_base"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
