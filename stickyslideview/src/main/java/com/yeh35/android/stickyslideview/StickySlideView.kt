@@ -26,13 +26,15 @@ class StickySlideView @JvmOverloads constructor(
         }
     var state: State = State.CLOSE
         private set
-    var transitionListener: MotionLayout.TransitionListener? = null
     var duration: Int = 300
         set(value) {
             motionLayout.getTransition(R.id.transition_sticky_slide_swipe).duration = field
             field = value
         }
+
     var onTopClickListener: OnTopClickListener? = null
+    var onShowListener: OnShowListener? = null
+    var onCloseListener: OnCloseListener? = null
 
     //private
     private val utilResources = UtilResources(this.resources)
@@ -68,27 +70,19 @@ class StickySlideView @JvmOverloads constructor(
 
         // Listener setting
         motionLayout.setTransitionListener(object : MotionLayout.TransitionListener {
-            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {
-                transitionListener?.onTransitionStarted(p0, p1, p2)
-            }
+            override fun onTransitionStarted(p0: MotionLayout?, p1: Int, p2: Int) {}
 
-            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {
-                transitionListener?.onTransitionChange(p0, p1, p2, p3)
-            }
+            override fun onTransitionChange(p0: MotionLayout?, p1: Int, p2: Int, p3: Float) {}
 
-            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {
-                transitionListener?.onTransitionTrigger(p0, p1, p2, p3)
-            }
+            override fun onTransitionTrigger(p0: MotionLayout?, p1: Int, p2: Boolean, p3: Float) {}
 
             override fun onTransitionCompleted(motion: MotionLayout?, currentId: Int) {
                 if (currentId == R.id.start) {
-                    this@StickySlideView.visibility = View.GONE
-                    state = State.CLOSE
+                    close()
+                    onCloseListener?.onClose(this@StickySlideView)
                 } else {
-                    state = State.SHOW
+                    onShowListener?.onShow(this@StickySlideView)
                 }
-
-                transitionListener?.onTransitionCompleted(motion, currentId)
             }
         })
 
@@ -149,10 +143,15 @@ class StickySlideView @JvmOverloads constructor(
         imm.hideSoftInputFromWindow(this.windowToken, 0)
         this.visibility = View.VISIBLE
         motionLayout.transitionToEnd()
+
+        state = State.SHOW
     }
 
     fun close() {
         motionLayout.transitionToStart()
+        this.visibility = View.GONE
+
+        state = State.CLOSE
     }
 
     enum class State {
